@@ -6,7 +6,6 @@ import io.mosip.packet.core.constant.DataFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,6 @@ import static io.mosip.packet.core.constant.RegistrationConstants.DEFAULT_TABLE;
 @Data
 @Getter
 @Setter
-
 public class FieldFormatRequest {
     private String fieldName;
     private FieldCategory fieldCategory;
@@ -32,7 +30,6 @@ public class FieldFormatRequest {
     private List<IndividualBiometricFormat> individualBiometricFormat;
     private Boolean useAsHandle;
 
-    @SneakyThrows
     public List<FieldName> getFieldList() {
         if(fieldList != null && fieldList.size() > 0)
             return fieldList;
@@ -42,11 +39,8 @@ public class FieldFormatRequest {
             String[] fields = fieldName.split(",");
             fieldList = new ArrayList<>();
 
-            if (fieldCategory != null && fieldCategory.equals(FieldCategory.DOC)) {
+            if(fieldCategory.equals(FieldCategory.DOC))
                 prefix = fieldToMap;
-             } else {
-                throw new Exception("Field Category not Configured for the field name :  " + fieldName);
-            }
 
             for(int i = 0; i < fields.length; i++) {
                 String field = fields[i];

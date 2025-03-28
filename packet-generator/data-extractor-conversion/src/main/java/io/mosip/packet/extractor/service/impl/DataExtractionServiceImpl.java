@@ -171,7 +171,7 @@ public class DataExtractionServiceImpl implements DataExtractionService {
 
         for(Map.Entry<String, Object> entry : bioData.entrySet()) {
             String data = Base64.getEncoder().encodeToString((byte[])entry.getValue());
-             convertedData.put(entry.getKey(), data);
+            convertedData.put(entry.getKey(), data);
         }
         return convertedData;
     }
@@ -332,7 +332,7 @@ public class DataExtractionServiceImpl implements DataExtractionService {
             System.out.println("Start Time " + startTime);
             System.out.println("End Time Time " + new Date());
         } catch (Exception e) {
-          e.printStackTrace();
+            e.printStackTrace();
         } finally {
             dataReaderApiFactory.disconnectDataReader();
             if(!IS_ONLY_FOR_QUALITY_CHECK)
